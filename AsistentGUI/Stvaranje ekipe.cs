@@ -13,11 +13,46 @@ namespace AsistentGUI
 {
     public partial class Stvaranje_ekipe : Form
     {
+        private List<OsobaModel> availableTeamMembers = new List<OsobaModel>();
+        private List<OsobaModel> selectedTeamMembers = new List<OsobaModel>();
+
+
         public Stvaranje_ekipe()
         {
             InitializeComponent();
+            //CreateSampleData();
+            WireUpList();
+        }
+        private void LoadStoreProcedure()
+        {
+            availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
+        }
+        
+        private void CreateSampleData()
+        {
+            availableTeamMembers.Add(new OsobaModel {Ime="Tim" , Prezime="Corey"});
+            availableTeamMembers.Add(new OsobaModel { Ime = "Marin", Prezime = "Budić" });
+
+            selectedTeamMembers.Add(new OsobaModel { Ime="Edi",Prezime="Budić"});
+            selectedTeamMembers.Add(new OsobaModel { Ime="Eda",Prezime="Maretić"});
+
         }
 
+        private void WireUpList()
+        {
+            comboBoxOdaberiIgraca.DataSource = null;
+
+            LoadStoreProcedure();
+            comboBoxOdaberiIgraca.DataSource = availableTeamMembers;
+            comboBoxOdaberiIgraca.DisplayMember = "FullName";
+
+            listBoxTeamMembers.DataSource = null;
+
+            listBoxTeamMembers.DataSource = selectedTeamMembers;
+            listBoxTeamMembers.DisplayMember = "FullName";
+
+            
+        }
         private void Label3_Click(object sender, EventArgs e)
         {
 
@@ -57,6 +92,41 @@ namespace AsistentGUI
             if (textBoxBrojTelClana.Text.Length == 0) return false;
             if (textBoxEmailClana.Text.Length == 0) return false;
             return true;
+        }
+
+        private void ListBoxTeamMembers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComboBoxOdaberiIgraca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonDodajClana_Click(object sender, EventArgs e)
+        {
+            OsobaModel p = (OsobaModel)comboBoxOdaberiIgraca.SelectedItem;
+
+            availableTeamMembers.Remove(p);
+            selectedTeamMembers.Add(p);
+
+            WireUpList();
+        }
+
+        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void Buttonizbrisi_Click(object sender, EventArgs e)
+        {
+            OsobaModel p = (OsobaModel)comboBoxOdaberiIgraca.SelectedItem;
+
+            availableTeamMembers.Add(p);
+            selectedTeamMembers.Remove(p);
+
+            WireUpList();
         }
     }
 }

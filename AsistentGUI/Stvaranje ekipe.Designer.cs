@@ -36,7 +36,6 @@
             this.Ime_clana = new System.Windows.Forms.Label();
             this.dodaj_clana = new System.Windows.Forms.Button();
             this.Stvori_ekip = new System.Windows.Forms.Button();
-            this.lista_Clanova = new System.Windows.Forms.TextBox();
             this.textBoxImeEkipe = new System.Windows.Forms.TextBox();
             this.textBoxImeClana = new System.Windows.Forms.TextBox();
             this.textBoxPrezimeClana = new System.Windows.Forms.TextBox();
@@ -45,6 +44,9 @@
             this.labelSelectTeamMember = new System.Windows.Forms.Label();
             this.comboBoxOdaberiIgraca = new System.Windows.Forms.ComboBox();
             this.buttonDodajClana = new System.Windows.Forms.Button();
+            this.listBoxTeamMembers = new System.Windows.Forms.ListBox();
+            this.buttonizbrisi = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // ime_ekip
@@ -117,14 +119,6 @@
             this.Stvori_ekip.Text = "Stvori_Ekipu";
             this.Stvori_ekip.UseVisualStyleBackColor = true;
             // 
-            // lista_Clanova
-            // 
-            this.lista_Clanova.Location = new System.Drawing.Point(450, 66);
-            this.lista_Clanova.Multiline = true;
-            this.lista_Clanova.Name = "lista_Clanova";
-            this.lista_Clanova.Size = new System.Drawing.Size(312, 290);
-            this.lista_Clanova.TabIndex = 8;
-            // 
             // textBoxImeEkipe
             // 
             this.textBoxImeEkipe.Location = new System.Drawing.Point(18, 45);
@@ -177,6 +171,7 @@
             this.comboBoxOdaberiIgraca.Name = "comboBoxOdaberiIgraca";
             this.comboBoxOdaberiIgraca.Size = new System.Drawing.Size(196, 24);
             this.comboBoxOdaberiIgraca.TabIndex = 15;
+            this.comboBoxOdaberiIgraca.SelectedIndexChanged += new System.EventHandler(this.ComboBoxOdaberiIgraca_SelectedIndexChanged);
             // 
             // buttonDodajClana
             // 
@@ -186,12 +181,39 @@
             this.buttonDodajClana.TabIndex = 16;
             this.buttonDodajClana.Text = "Dodaj Člana";
             this.buttonDodajClana.UseVisualStyleBackColor = true;
+            this.buttonDodajClana.Click += new System.EventHandler(this.ButtonDodajClana_Click);
+            // 
+            // listBoxTeamMembers
+            // 
+            this.listBoxTeamMembers.FormattingEnabled = true;
+            this.listBoxTeamMembers.ItemHeight = 16;
+            this.listBoxTeamMembers.Location = new System.Drawing.Point(487, 45);
+            this.listBoxTeamMembers.Name = "listBoxTeamMembers";
+            this.listBoxTeamMembers.Size = new System.Drawing.Size(275, 308);
+            this.listBoxTeamMembers.TabIndex = 17;
+            this.listBoxTeamMembers.SelectedIndexChanged += new System.EventHandler(this.ListBoxTeamMembers_SelectedIndexChanged);
+            // 
+            // buttonizbrisi
+            // 
+            this.buttonizbrisi.Location = new System.Drawing.Point(782, 188);
+            this.buttonizbrisi.Name = "buttonizbrisi";
+            this.buttonizbrisi.Size = new System.Drawing.Size(75, 23);
+            this.buttonizbrisi.TabIndex = 18;
+            this.buttonizbrisi.Text = "Izbriši";
+            this.buttonizbrisi.UseVisualStyleBackColor = true;
+            this.buttonizbrisi.Click += new System.EventHandler(this.Buttonizbrisi_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
             // 
             // Stvaranje_ekipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(858, 450);
+            this.Controls.Add(this.buttonizbrisi);
+            this.Controls.Add(this.listBoxTeamMembers);
             this.Controls.Add(this.buttonDodajClana);
             this.Controls.Add(this.comboBoxOdaberiIgraca);
             this.Controls.Add(this.labelSelectTeamMember);
@@ -200,7 +222,6 @@
             this.Controls.Add(this.textBoxPrezimeClana);
             this.Controls.Add(this.textBoxImeClana);
             this.Controls.Add(this.textBoxImeEkipe);
-            this.Controls.Add(this.lista_Clanova);
             this.Controls.Add(this.Stvori_ekip);
             this.Controls.Add(this.dodaj_clana);
             this.Controls.Add(this.Ime_clana);
@@ -226,7 +247,6 @@
         private System.Windows.Forms.Label Ime_clana;
         private System.Windows.Forms.Button dodaj_clana;
         private System.Windows.Forms.Button Stvori_ekip;
-        private System.Windows.Forms.TextBox lista_Clanova;
         private System.Windows.Forms.TextBox textBoxImeEkipe;
         private System.Windows.Forms.TextBox textBoxImeClana;
         private System.Windows.Forms.TextBox textBoxPrezimeClana;
@@ -235,5 +255,8 @@
         private System.Windows.Forms.Label labelSelectTeamMember;
         private System.Windows.Forms.ComboBox comboBoxOdaberiIgraca;
         private System.Windows.Forms.Button buttonDodajClana;
+        private System.Windows.Forms.ListBox listBoxTeamMembers;
+        private System.Windows.Forms.Button buttonizbrisi;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
