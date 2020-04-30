@@ -13,7 +13,7 @@ namespace AsistentGUI
 {
     public partial class Stvaranje_ekipe : Form
     {
-        private List<OsobaModel> availableTeamMembers = new List<OsobaModel>();
+        private List<OsobaModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
         private List<OsobaModel> selectedTeamMembers = new List<OsobaModel>();
 
 
@@ -23,10 +23,7 @@ namespace AsistentGUI
             //CreateSampleData();
             WireUpList();
         }
-        private void LoadStoreProcedure()
-        {
-            availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
-        }
+       
         
         private void CreateSampleData()
         {
@@ -42,7 +39,7 @@ namespace AsistentGUI
         {
             comboBoxOdaberiIgraca.DataSource = null;
 
-            LoadStoreProcedure();
+            
             comboBoxOdaberiIgraca.DataSource = availableTeamMembers;
             comboBoxOdaberiIgraca.DisplayMember = "FullName";
 
