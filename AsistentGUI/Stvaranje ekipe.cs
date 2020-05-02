@@ -13,6 +13,7 @@ namespace AsistentGUI
 {
     public partial class Stvaranje_ekipe : Form
     {
+       
         private List<OsobaModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
         private List<OsobaModel> selectedTeamMembers = new List<OsobaModel>();
 
@@ -71,7 +72,7 @@ namespace AsistentGUI
                 p.EmailAdresa = textBoxEmailClana.Text;
 
                 GlobalConfig.Connection.CreatePerson(p);
-
+                WireUpList();
                 textBoxImeClana.Text = " ";
                 textBoxPrezimeClana.Text = "";
                 textBoxBrojTelClana.Text = "";
@@ -118,10 +119,11 @@ namespace AsistentGUI
 
         private void Buttonizbrisi_Click(object sender, EventArgs e)
         {
-            OsobaModel p = (OsobaModel)comboBoxOdaberiIgraca.SelectedItem;
+            OsobaModel p = (OsobaModel)listBoxTeamMembers.SelectedItem;
 
-            availableTeamMembers.Add(p);
             selectedTeamMembers.Remove(p);
+            availableTeamMembers.Add(p);
+            
 
             WireUpList();
         }

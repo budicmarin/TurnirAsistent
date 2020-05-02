@@ -168,6 +168,7 @@
             // 
             this.comboBoxOdaberiIgraca.FormattingEnabled = true;
             this.comboBoxOdaberiIgraca.Location = new System.Drawing.Point(18, 115);
+            this.comboBoxOdaberiIgraca.MaxDropDownItems = 20;
             this.comboBoxOdaberiIgraca.Name = "comboBoxOdaberiIgraca";
             this.comboBoxOdaberiIgraca.Size = new System.Drawing.Size(196, 24);
             this.comboBoxOdaberiIgraca.TabIndex = 15;
