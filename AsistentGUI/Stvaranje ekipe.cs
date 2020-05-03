@@ -127,5 +127,13 @@ namespace AsistentGUI
 
             WireUpList();
         }
+
+        private void Stvori_ekip_Click(object sender, EventArgs e)
+        {
+            EkipaModel t = new EkipaModel();
+            t.ImeEkipe = textBoxImeEkipe.Text;
+            t.ClanoviModel = selectedTeamMembers;
+            GlobalConfig.Connection.CreateTeam(t);
+        }
     }
 }

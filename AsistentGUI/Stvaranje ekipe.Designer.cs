@@ -118,6 +118,7 @@
             this.Stvori_ekip.TabIndex = 7;
             this.Stvori_ekip.Text = "Stvori_Ekipu";
             this.Stvori_ekip.UseVisualStyleBackColor = true;
+            this.Stvori_ekip.Click += new System.EventHandler(this.Stvori_ekip_Click);
             // 
             // textBoxImeEkipe
             // 
