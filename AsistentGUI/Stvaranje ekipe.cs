@@ -133,7 +133,7 @@ namespace AsistentGUI
             EkipaModel t = new EkipaModel();
             t.ImeEkipe = textBoxImeEkipe.Text;
             t.ClanoviModel = selectedTeamMembers;
-            GlobalConfig.Connection.CreateTeam(t);
+            t=GlobalConfig.Connection.CreateTeam(t);
         }
     }
 }
