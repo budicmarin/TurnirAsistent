@@ -28,11 +28,11 @@ namespace AsistentGUI
         
         private void CreateSampleData()
         {
-            availableTeamMembers.Add(new OsobaModel {Ime="Tim" , Prezime="Corey"});
-            availableTeamMembers.Add(new OsobaModel { Ime = "Marin", Prezime = "Budić" });
+            availableTeamMembers.Add(new OsobaModel {FirstName="Tim" , LastName="Corey"});
+            availableTeamMembers.Add(new OsobaModel { FirstName = "Marin", LastName = "Budić" });
 
-            selectedTeamMembers.Add(new OsobaModel { Ime="Edi",Prezime="Budić"});
-            selectedTeamMembers.Add(new OsobaModel { Ime="Eda",Prezime="Maretić"});
+            selectedTeamMembers.Add(new OsobaModel { FirstName = "Edi",LastName="Budić"});
+            selectedTeamMembers.Add(new OsobaModel { FirstName = "Eda",LastName="Maretić"});
 
         }
 
@@ -66,10 +66,10 @@ namespace AsistentGUI
             if(ValidateForm())
             {
                 OsobaModel p = new OsobaModel();
-                p.Ime = textBoxImeClana.Text;
-                p.Prezime = textBoxPrezimeClana.Text;
-                p.BrojMobitela = textBoxBrojTelClana.Text;
-                p.EmailAdresa = textBoxEmailClana.Text;
+                p.FirstName = textBoxImeClana.Text;
+                p.LastName= textBoxPrezimeClana.Text;
+                p.CellphoneNumber = textBoxBrojTelClana.Text;
+                p.EmailAdress = textBoxEmailClana.Text;
 
                 GlobalConfig.Connection.CreatePerson(p);
                 WireUpList();
@@ -134,6 +134,8 @@ namespace AsistentGUI
             t.ImeEkipe = textBoxImeEkipe.Text;
             t.ClanoviModel = selectedTeamMembers;
             t=GlobalConfig.Connection.CreateTeam(t);
+
+            //TODO  - If we aren't closing this form after cration, reset this form
         }
     }
 }
