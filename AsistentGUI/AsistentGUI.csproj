@@ -52,11 +52,11 @@
     <Compile Include="Pregled turnira.Designer.cs">
       <DependentUpon>Pregled turnira.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dodavanje ekipe.cs">
+    <Compile Include="Dodavanje_ekipe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dodavanje ekipe.Designer.cs">
-      <DependentUpon>Dodavanje ekipe.cs</DependentUpon>
+    <Compile Include="Dodavanje_ekipe.Designer.cs">
+      <DependentUpon>Dodavanje_ekipe.cs</DependentUpon>
     </Compile>
     <Compile Include="Početni kran.cs">
       <SubType>Form</SubType>
@@ -84,8 +84,8 @@
     <EmbeddedResource Include="Početni kran.resx">
       <DependentUpon>Početni kran.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dodavanje ekipe.resx">
-      <DependentUpon>Dodavanje ekipe.cs</DependentUpon>
+    <EmbeddedResource Include="Dodavanje_ekipe.resx">
+      <DependentUpon>Dodavanje_ekipe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

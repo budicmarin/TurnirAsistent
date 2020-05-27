@@ -131,8 +131,8 @@ namespace AsistentGUI
         private void Stvori_ekip_Click(object sender, EventArgs e)
         {
             EkipaModel t = new EkipaModel();
-            t.ImeEkipe = textBoxImeEkipe.Text;
-            t.ClanoviModel = selectedTeamMembers;
+            t.TeamName= textBoxImeEkipe.Text;
+            t.TeamMembers = selectedTeamMembers;
             t=GlobalConfig.Connection.CreateTeam(t);
 
             //TODO  - If we aren't closing this form after cration, reset this form
