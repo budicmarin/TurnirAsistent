@@ -16,12 +16,13 @@ namespace AsistentGUI
        
         private List<OsobaModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
         private List<OsobaModel> selectedTeamMembers = new List<OsobaModel>();
+        private ITeamRequester callingForm;
 
-
-        public Stvaranje_ekipe()
+        public Stvaranje_ekipe(ITeamRequester caller)
         {
             InitializeComponent();
             //CreateSampleData();
+            callingForm = caller;
             WireUpList();
         }
        
@@ -72,6 +73,7 @@ namespace AsistentGUI
                 p.EmailAdress = textBoxEmailClana.Text;
 
                 GlobalConfig.Connection.CreatePerson(p);
+                selectedTeamMembers.Add(p);
                 WireUpList();
                 textBoxImeClana.Text = " ";
                 textBoxPrezimeClana.Text = "";
@@ -133,9 +135,13 @@ namespace AsistentGUI
             EkipaModel t = new EkipaModel();
             t.TeamName= textBoxImeEkipe.Text;
             t.TeamMembers = selectedTeamMembers;
-            t=GlobalConfig.Connection.CreateTeam(t);
+            GlobalConfig.Connection.CreateTeam(t);
 
-            //TODO  - If we aren't closing this form after cration, reset this form
+            callingForm.TeamComplete(t);
+
+            this.Close();
+
+            
         }
     }
 }

@@ -146,6 +146,7 @@
             this.buttonIzbrisiTeam.TabIndex = 13;
             this.buttonIzbrisiTeam.Text = "Izbrisi";
             this.buttonIzbrisiTeam.UseVisualStyleBackColor = true;
+            this.buttonIzbrisiTeam.Click += new System.EventHandler(this.buttonIzbrisiTeam_Click);
             // 
             // buttonIzbrisi
             // 
@@ -155,6 +156,7 @@
             this.buttonIzbrisi.TabIndex = 14;
             this.buttonIzbrisi.Text = "Izbrisi";
             this.buttonIzbrisi.UseVisualStyleBackColor = true;
+            this.buttonIzbrisi.Click += new System.EventHandler(this.buttonIzbrisi_Click);
             // 
             // labelNagrada
             // 
@@ -181,15 +183,17 @@
             this.linkLabelCreateTeam.TabIndex = 17;
             this.linkLabelCreateTeam.TabStop = true;
             this.linkLabelCreateTeam.Text = "Stvori Ekipu";
+            this.linkLabelCreateTeam.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCreateTeam_LinkClicked);
             // 
             // buttonDodajNagrada
             // 
-            this.buttonDodajNagrada.Location = new System.Drawing.Point(233, 188);
+            this.buttonDodajNagrada.Location = new System.Drawing.Point(41, 307);
             this.buttonDodajNagrada.Name = "buttonDodajNagrada";
-            this.buttonDodajNagrada.Size = new System.Drawing.Size(75, 23);
+            this.buttonDodajNagrada.Size = new System.Drawing.Size(174, 91);
             this.buttonDodajNagrada.TabIndex = 18;
-            this.buttonDodajNagrada.Text = "Dodaj ekipu";
+            this.buttonDodajNagrada.Text = "Stvori nagradu";
             this.buttonDodajNagrada.UseVisualStyleBackColor = true;
+            this.buttonDodajNagrada.Click += new System.EventHandler(this.buttonDodajNagrada_Click);
             // 
             // listBoxTeams
             // 
@@ -199,6 +203,7 @@
             this.listBoxTeams.Name = "listBoxTeams";
             this.listBoxTeams.Size = new System.Drawing.Size(242, 132);
             this.listBoxTeams.TabIndex = 19;
+            this.listBoxTeams.SelectedIndexChanged += new System.EventHandler(this.listBoxTeams_SelectedIndexChanged);
             // 
             // listBoxPrizes
             // 

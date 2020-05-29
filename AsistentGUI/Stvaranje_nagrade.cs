@@ -13,9 +13,15 @@ namespace AsistentGUI
 {
     public partial class Stvaranje_nagrade : Form
     {
-        public Stvaranje_nagrade()
+        IPrizeRequester callingForm;
+
+        public Stvaranje_nagrade(IPrizeRequester caller)
         {
             InitializeComponent();
+
+
+
+            callingForm = caller;
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -39,11 +45,14 @@ namespace AsistentGUI
                     textBoxPostotakNagrade.Text);
                 
                 GlobalConfig.Connection.CreatePrize(model);
-                
-                textBoxImeNagrade.Text = "";
-                textBoxBrojNagrade.Text = "";
-                textBoxKolicina.Text = "0";
-                textBoxPostotakNagrade.Text = "0";
+               
+                callingForm.PrizeComplete(model);
+
+                //textBoxImeNagrade.Text = "";
+                // textBoxBrojNagrade.Text = "";
+                //textBoxKolicina.Text = "0";
+                //textBoxPostotakNagrade.Text = "0";
+                this.Close();
             }
             else
             {

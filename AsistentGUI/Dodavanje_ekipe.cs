@@ -11,7 +11,7 @@ using TurnirAsistentModel;
 
 namespace AsistentGUI
 {
-    public partial class PregledTurnira : Form
+    public partial class PregledTurnira : Form,IPrizeRequester, ITeamRequester
     {
         List<EkipaModel> availableTeams = GlobalConfig.Connection.GetTeam_All();
         List<EkipaModel> selectedTeams = new List<EkipaModel>();
@@ -45,7 +45,7 @@ namespace AsistentGUI
 
         private void PregledTurnira_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,6 +59,57 @@ namespace AsistentGUI
                 selectedTeams.Add(t);
                 WireUpList();
 
+            }
+        }
+
+        private void buttonDodajNagrada_Click(object sender, EventArgs e)
+        {
+            Stvaranje_nagrade frm = new Stvaranje_nagrade(this);
+            frm.Show();
+        }
+
+        public void PrizeComplete(NagradaModel model)
+        {
+            selectedPrizes.Add(model);
+            WireUpList();
+        }
+
+        public void TeamComplete(EkipaModel model)
+        {
+            selectedTeams.Add(model);
+            WireUpList();
+        }
+
+        private void linkLabelCreateTeam_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Stvaranje_ekipe frm = new Stvaranje_ekipe(this);
+            frm.Show();
+        }
+
+        private void buttonIzbrisiTeam_Click(object sender, EventArgs e)
+        {
+            EkipaModel t = (EkipaModel)listBoxTeams.SelectedItem;
+            if(t!=null)
+            {
+                selectedTeams.Remove(t);
+                availableTeams.Add(t);
+
+                WireUpList();
+            }
+        }
+
+        private void listBoxTeams_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void buttonIzbrisi_Click(object sender, EventArgs e)
+        {
+            NagradaModel p = (NagradaModel)listBoxPrizes.SelectedItem;
+            if(p!=null)
+            {
+                selectedPrizes.Remove(p);
+                WireUpList();
             }
         }
     }
