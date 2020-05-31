@@ -49,6 +49,7 @@
             this.buttonDodajNagrada = new System.Windows.Forms.Button();
             this.listBoxTeams = new System.Windows.Forms.ListBox();
             this.listBoxPrizes = new System.Windows.Forms.ListBox();
+            this.buttonStvori_turnir = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,9 +188,9 @@
             // 
             // buttonDodajNagrada
             // 
-            this.buttonDodajNagrada.Location = new System.Drawing.Point(41, 307);
+            this.buttonDodajNagrada.Location = new System.Drawing.Point(41, 216);
             this.buttonDodajNagrada.Name = "buttonDodajNagrada";
-            this.buttonDodajNagrada.Size = new System.Drawing.Size(174, 91);
+            this.buttonDodajNagrada.Size = new System.Drawing.Size(103, 44);
             this.buttonDodajNagrada.TabIndex = 18;
             this.buttonDodajNagrada.Text = "Stvori nagradu";
             this.buttonDodajNagrada.UseVisualStyleBackColor = true;
@@ -214,11 +215,22 @@
             this.listBoxPrizes.Size = new System.Drawing.Size(242, 116);
             this.listBoxPrizes.TabIndex = 20;
             // 
+            // buttonStvori_turnir
+            // 
+            this.buttonStvori_turnir.Location = new System.Drawing.Point(41, 297);
+            this.buttonStvori_turnir.Name = "buttonStvori_turnir";
+            this.buttonStvori_turnir.Size = new System.Drawing.Size(267, 110);
+            this.buttonStvori_turnir.TabIndex = 21;
+            this.buttonStvori_turnir.Text = "Stvori turnir";
+            this.buttonStvori_turnir.UseVisualStyleBackColor = true;
+            this.buttonStvori_turnir.Click += new System.EventHandler(this.buttonStvori_turnir_Click);
+            // 
             // PregledTurnira
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(932, 450);
+            this.Controls.Add(this.buttonStvori_turnir);
             this.Controls.Add(this.listBoxPrizes);
             this.Controls.Add(this.listBoxTeams);
             this.Controls.Add(this.buttonDodajNagrada);
@@ -264,6 +276,7 @@
         private System.Windows.Forms.Button buttonDodajNagrada;
         private System.Windows.Forms.ListBox listBoxTeams;
         private System.Windows.Forms.ListBox listBoxPrizes;
+        private System.Windows.Forms.Button buttonStvori_turnir;
     }
 }
 

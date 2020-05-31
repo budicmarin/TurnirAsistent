@@ -112,5 +112,27 @@ namespace AsistentGUI
                 WireUpList();
             }
         }
+
+        private void buttonStvori_turnir_Click(object sender, EventArgs e)
+        {
+            decimal fee;
+            bool feeAcceptable=decimal.TryParse(textBoxNagrada.Text,out fee);
+            if(!feeAcceptable)
+            {
+                MessageBox.Show("Moraš upisati pravilnu kotizaciju", "Netočna kotizacija", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            TurnirModel tm = new TurnirModel();
+            tm.TournamentName= ime_turnira.Text;
+            tm.EntryFee = fee;
+
+            foreach(NagradaModel prize in selectedPrizes)
+            {
+                tm.Prizes.Add(prize);
+            }
+            GlobalConfig.Connection.CreateTournament(tm);
+
+        }
     }
 }
