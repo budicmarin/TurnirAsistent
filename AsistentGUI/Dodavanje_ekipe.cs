@@ -131,6 +131,9 @@ namespace AsistentGUI
             {
                 tm.Prizes.Add(prize);
             }
+
+            TournamentLogic.CreateRounds(tm);
+
             GlobalConfig.Connection.CreateTournament(tm);
 
         }
