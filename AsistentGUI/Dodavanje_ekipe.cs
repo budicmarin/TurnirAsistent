@@ -124,8 +124,9 @@ namespace AsistentGUI
             }
 
             TurnirModel tm = new TurnirModel();
-            tm.TournamentName= ime_turnira.Text;
+            tm.TournamentName= ime_turn.Text;
             tm.EntryFee = fee;
+            tm.EntredTeams = selectedTeams;
 
             foreach(NagradaModel prize in selectedPrizes)
             {
