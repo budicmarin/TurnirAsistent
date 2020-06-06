@@ -52,6 +52,7 @@
             this.Novi.TabIndex = 1;
             this.Novi.Text = "Novi Tunrir";
             this.Novi.UseVisualStyleBackColor = true;
+            this.Novi.Click += new System.EventHandler(this.Novi_Click);
             // 
             // Izaberi
             // 

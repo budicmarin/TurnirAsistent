@@ -16,8 +16,8 @@ namespace AsistentGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            TurnirAsistentModel.GlobalConfig.InitalizeConnectins(TurnirAsistentModel.DatabaseType.TextFile);
-            Application.Run(new PregledTurnira());
+            TurnirAsistentModel.GlobalConfig.InitalizeConnectins(TurnirAsistentModel.DatabaseType.Sql);
+            Application.Run(new PrijavaTurnir());
             // Application.Run(new PrijavaTurnir());
         }
     }
