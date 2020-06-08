@@ -41,8 +41,16 @@ namespace AsistentGUI
 
         private void Novi_Click(object sender, EventArgs e)
         {
-            PregledTurnira frm = new PregledTurnira();
+            StvaranjeTurniraForm frm = new StvaranjeTurniraForm();
             frm.Show();
+        }
+
+        private void Zapocni_Click(object sender, EventArgs e)
+        {
+            TurnirModel tm = (TurnirModel)Izaberi.SelectedItem;
+            DashboardForm frm = new DashboardForm(tm);
+            frm.Show();
+            
         }
     }
 }

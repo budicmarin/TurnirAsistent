@@ -1,6 +1,6 @@
 ﻿namespace AsistentGUI
 {
-    partial class PregledTurnira
+    partial class StvaranjeTurniraForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PregledTurnira));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stvaranje_turnira = new System.Windows.Forms.Label();
             this.ime_turnira = new System.Windows.Forms.Label();
@@ -50,16 +47,7 @@
             this.listBoxTeams = new System.Windows.Forms.ListBox();
             this.listBoxPrizes = new System.Windows.Forms.ListBox();
             this.buttonStvori_turnir = new System.Windows.Forms.Button();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.textToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 28);
             // 
             // textToolStripMenuItem
             // 
@@ -225,7 +213,7 @@
             this.buttonStvori_turnir.UseVisualStyleBackColor = true;
             this.buttonStvori_turnir.Click += new System.EventHandler(this.buttonStvori_turnir_Click);
             // 
-            // PregledTurnira
+            // StvaranjeTurniraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -247,10 +235,8 @@
             this.Controls.Add(this.ime_turn);
             this.Controls.Add(this.ime_turnira);
             this.Controls.Add(this.stvaranje_turnira);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "PregledTurnira";
+            this.Name = "StvaranjeTurniraForm";
             this.Load += new System.EventHandler(this.PregledTurnira_Load);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

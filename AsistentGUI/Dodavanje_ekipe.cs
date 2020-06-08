@@ -11,14 +11,14 @@ using TurnirAsistentModel;
 
 namespace AsistentGUI
 {
-    public partial class PregledTurnira : Form,IPrizeRequester, ITeamRequester
+    public partial class StvaranjeTurniraForm : Form,IPrizeRequester, ITeamRequester
     {
         List<EkipaModel> availableTeams = GlobalConfig.Connection.GetTeam_All();
         List<EkipaModel> selectedTeams = new List<EkipaModel>();
         List<NagradaModel> selectedPrizes = new List<NagradaModel>();
 
 
-        public PregledTurnira()
+        public StvaranjeTurniraForm()
         {
             InitializeComponent();
             WireUpList();

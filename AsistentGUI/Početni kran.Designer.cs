@@ -43,6 +43,7 @@
             this.Zapocni.TabIndex = 0;
             this.Zapocni.Text = "Pokreni turnir";
             this.Zapocni.UseVisualStyleBackColor = true;
+            this.Zapocni.Click += new System.EventHandler(this.Zapocni_Click);
             // 
             // Novi
             // 
@@ -81,7 +82,7 @@
             this.Controls.Add(this.Izaberi);
             this.Controls.Add(this.Novi);
             this.Controls.Add(this.Zapocni);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+           
             this.Name = "PrijavaTurnir";
             this.Text = "PrijavaTurnir";
             this.Load += new System.EventHandler(this.PrijavaTurnir_Load);
