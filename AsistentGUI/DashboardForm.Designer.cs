@@ -90,6 +90,7 @@
             this.checkBoxUnplayed.TabIndex = 4;
             this.checkBoxUnplayed.Text = "Neodigrane runde";
             this.checkBoxUnplayed.UseVisualStyleBackColor = true;
+            this.checkBoxUnplayed.CheckedChanged += new System.EventHandler(this.checkBoxUnplayed_CheckedChanged);
             // 
             // listBoxMatchups
             // 
@@ -147,6 +148,7 @@
             this.buttonScore.TabIndex = 12;
             this.buttonScore.Text = "Rezultat";
             this.buttonScore.UseVisualStyleBackColor = true;
+            this.buttonScore.Click += new System.EventHandler(this.buttonScore_Click);
             // 
             // textBoxRezultat1
             // 

@@ -136,7 +136,11 @@ namespace AsistentGUI
             TournamentLogic.CreateRounds(tm);
 
             GlobalConfig.Connection.CreateTournament(tm);
-
+            
+                
+            DashboardForm frm = new DashboardForm(tm);
+            frm.Show();
+            this.Close();
         }
     }
 }

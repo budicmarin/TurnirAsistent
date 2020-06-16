@@ -43,6 +43,7 @@ namespace AsistentGUI
         {
             StvaranjeTurniraForm frm = new StvaranjeTurniraForm();
             frm.Show();
+            WireUpList();
         }
 
         private void Zapocni_Click(object sender, EventArgs e)

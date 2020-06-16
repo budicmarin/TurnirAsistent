@@ -41,7 +41,7 @@ namespace AsistentGUI
             
             comboBoxRunde.DataSource = rounds;
             listBoxMatchups.DataSource = selectedMatchups;
-            listBoxMatchups.DisplayMember = "DisplayName";
+            listBoxMatchups.DisplayMember = nameof(UtakmicaModel.DisplayName);
 
         }
         
@@ -80,14 +80,35 @@ namespace AsistentGUI
                     selectedMatchups.Clear();
                     foreach (UtakmicaModel m in matchups)
                     {
-                        selectedMatchups.Add(m);
+                        if (m.Winner==null || !checkBoxUnplayed.Checked)
+                        {
+                            selectedMatchups.Add(m);
+                        }
+                        
                     }
-                    //selectedMatchups =new BindingList<UtakmicaModel>( matchups);
+                    //selectedMatchups =new BindingList<UtakmicaModel>(matchups);
                 }
 
             }
-            LoadMatchup(selectedMatchups.First());
+            if(selectedMatchups.Count>0)
+            {
+                LoadMatchup(selectedMatchups.First());
+            }
+            DisplayMatchupInfo();
+
             //WireUpMatchupsList();
+        }
+        private void DisplayMatchupInfo()
+        {
+            bool isVisible = (selectedMatchups.Count>0);
+            labelTim1.Visible = isVisible;
+            textBoxRezultat1.Visible = isVisible;
+            labelTim2.Visible = isVisible;
+            textBoxRezultat2.Visible = isVisible;
+            buttonScore.Visible = isVisible;
+            labelVS.Visible = isVisible;
+
+            
         }
 
         private void labelTim1_Click(object sender, EventArgs e)
@@ -97,41 +118,103 @@ namespace AsistentGUI
         private void LoadMatchup(UtakmicaModel m)
         {
             
-            for (int i = 0; i < m.Entries.Count; i++)
-            {
-                if (i==0)
+                for (int i = 0; i < m.Entries.Count; i++)
                 {
-                    if (m.Entries[0].TeamCompeting.TeamName!=null)
-                    { 
-                        labelTim1.Text = m.Entries[0].TeamCompeting.TeamName;
-                        textBoxRezultat1.Text = m.Entries[0].Score.ToString();
-                        labelTim2.Text = "<bye>";
-                        textBoxRezultat2.Text = "0";
-                    }
-                    else
+                    if (i == 0)
                     {
-                        labelTim1.Text = "Not Yet Set";
-                        textBoxRezultat1.Text = "";
+                        if (m.Entries[0].TeamCompeting != null)
+                        {
+                            labelTim1.Text = m.Entries[0].TeamCompeting.TeamName;
+                            textBoxRezultat1.Text = m.Entries[0].Score.ToString();
+                            labelTim2.Text = "<bye>";
+                            textBoxRezultat2.Text = "0";
+                        }
+                        else
+                        {
+                            labelTim1.Text = "Not Yet Set";
+                            textBoxRezultat1.Text = "";
+                        }
+                    }
+                    if (i == 1)
+                    {
+                        if (m.Entries[1].TeamCompeting != null)
+                        {
+                            labelTim2.Text = m.Entries[1].TeamCompeting.TeamName;
+                            textBoxRezultat2.Text = m.Entries[1].Score.ToString();
+                        }
+                        else
+                        {
+                            labelTim2.Text = "Not Yet Set";
+                            textBoxRezultat2.Text = "";
+                        }
                     }
                 }
-                if(i==1)
-                {
-                    if (m.Entries[1].TeamCompeting.TeamName != null)
-                    {
-                        labelTim2.Text = m.Entries[1].TeamCompeting.TeamName;
-                        textBoxRezultat2.Text = m.Entries[1].Score.ToString();
-                    }
-                    else
-                    {
-                        labelTim2.Text = "Not Yet Set";
-                        textBoxRezultat2.Text = "";
-                    }
-                }
-            }
+            
         }
         private void listBoxMatchups_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadMatchup( (UtakmicaModel)listBoxMatchups.SelectedItem);
+            LoadMatchup((UtakmicaModel)listBoxMatchups.SelectedItem);
+        }
+
+        private void checkBoxUnplayed_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadMatchups((int)comboBoxRunde.SelectedItem);
+        }
+
+        private void buttonScore_Click(object sender, EventArgs e)
+        {
+            UtakmicaModel m = (UtakmicaModel)listBoxMatchups.SelectedItem;
+            double teamOneScore=0;
+            double teamTwoScore = 0;
+            for (int i = 0; i < m.Entries.Count; i++)
+            {
+                if (i == 0)
+                {
+                    if (m.Entries[0].TeamCompeting.TeamName != null)
+                    {
+                        
+
+                      
+                        bool scoreValid = double.TryParse(textBoxRezultat1.Text,out teamOneScore);
+                        if(scoreValid)
+                        {
+                            m.Entries[0].Score = double.Parse(textBoxRezultat1.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Pelase enter a valid score for team 1");
+                            return;
+                        }
+
+
+                    }
+                   
+                }
+                if (i == 1)
+                {
+                    if (m.Entries[1].TeamCompeting.TeamName != null)
+                    {
+                        
+                        
+                        bool scoreValid = double.TryParse(textBoxRezultat2.Text, out teamTwoScore);
+                        if (scoreValid)
+                        {
+                            m.Entries[1].Score = double.Parse(textBoxRezultat2.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Pelase enter a valid score for team 2");
+                            return;
+                        }
+                        
+                    }
+                    
+                }
+            }
+
+            TournamentLogic.UpdateTournamentResults(tournament);
+            LoadMatchups((int)comboBoxRunde.SelectedItem);
+          
         }
     }
 }
