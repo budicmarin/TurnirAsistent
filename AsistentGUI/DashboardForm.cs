@@ -160,9 +160,40 @@ namespace AsistentGUI
         {
             LoadMatchups((int)comboBoxRunde.SelectedItem);
         }
+        private string ValidData()
+        {
+            string output = "";
+            double teamOneScore = 0;
+            double teamTwoScore = 0;
+            bool scoreOneValid = double.TryParse(textBoxRezultat1.Text, out teamOneScore);
+            bool scoreTwoValid = double.TryParse(textBoxRezultat2.Text, out teamTwoScore);
+            if (!scoreOneValid )
+            {
+                output = "The score One value is not a valid number";
+            }
 
+            else if (!scoreTwoValid)
+            {
+                output = "The score Two value is not a valid number";
+            }
+            else if (teamOneScore==0 && teamTwoScore==0)
+            {
+                output = "You did not enter a score for either team";
+            }
+            else if(teamOneScore==teamTwoScore)
+            {
+                output = "We do not exept equals";
+            }
+            return output;
+        }
         private void buttonScore_Click(object sender, EventArgs e)
         {
+            string errorMessage = ValidData();
+            if(errorMessage.Length>0)
+            {
+                MessageBox.Show($"Imput error:{errorMessage}");
+                return;
+            }
             UtakmicaModel m = (UtakmicaModel)listBoxMatchups.SelectedItem;
             double teamOneScore=0;
             double teamTwoScore = 0;
@@ -212,7 +243,14 @@ namespace AsistentGUI
                 }
             }
 
-            TournamentLogic.UpdateTournamentResults(tournament);
+            try
+            {
+                TournamentLogic.UpdateTournamentResults(tournament);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aplication has the following error:{ex.Message}");
+            }
             LoadMatchups((int)comboBoxRunde.SelectedItem);
           
         }
